@@ -3,7 +3,20 @@ import { TextField, ColorPicker } from "@shopify/polaris";
 import React, { useCallback, useState, useEffect } from "react";
 
 import html2canvas from "html2canvas";
-const hsl = require("hsl-to-hex");
+
+function hsl2rgb(h, s, l,alpha) {
+    s /= 100;
+    l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n =>
+        l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    
+    let temp = [255 * f(0), 255 * f(8), 255 * f(4)];
+   
+    return "rgba("+temp[0]+","+temp[1]+","+temp[2]+","+alpha+")";
+}
+
 
 export default function App() {
   const [img, setImg] = useState(null);
@@ -47,11 +60,8 @@ export default function App() {
             height: "500px",
             backgroundColor: "#000000",
             textAlign: "center",
-            color: hsl(
-              textColor.hue,
-              textColor.saturation * 100,
-              textColor.brightness * 100
-            ),
+              color:   hsl2rgb(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
+
             fontSize: 25,
             display: "",
             zIndex: 1000,
