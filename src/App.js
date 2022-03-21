@@ -37,7 +37,7 @@ export default function App() {
     toImg();
   }, [value, textColor]);
   return (
-    <div className="App">
+      <div className="App" style={{paddingLeft:20}}>
       <div>
         <TextField
           label="Your quote"
@@ -62,7 +62,7 @@ export default function App() {
             textAlign: "center",
               color:   hsl2rgba(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
 
-            fontSize: 25,
+            fontSize: 30,
             display: "",
             zIndex: 1000,
               position: "absolute",
