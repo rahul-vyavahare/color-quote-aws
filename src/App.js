@@ -4,7 +4,7 @@ import React, { useCallback, useState, useEffect } from "react";
 
 import html2canvas from "html2canvas";
 
-function hsl2rgb(h, s, l,alpha) {
+function hsl2rgba(h, s, l,alpha) {
     s /= 100;
     l /= 100;
     const k = n => (n + h / 30) % 12;
@@ -60,7 +60,7 @@ export default function App() {
             height: "500px",
             backgroundColor: "#000000",
             textAlign: "center",
-              color:   hsl2rgb(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
+              color:   hsl2rgba(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
 
             fontSize: 25,
             display: "",
