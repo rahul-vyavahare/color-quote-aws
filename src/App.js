@@ -4,19 +4,16 @@ import React, { useCallback, useState, useEffect } from "react";
 
 import html2canvas from "html2canvas";
 
-function hsl2rgba(h, s, l,alpha) {
-    s /= 100;
-    l /= 100;
-    const k = n => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = n =>
-        l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-    
-    let temp = [255 * f(0), 255 * f(8), 255 * f(4)];
-   
-    return "rgba("+temp[0]+","+temp[1]+","+temp[2]+","+alpha+")";
-}
 
+const HSBToRGB = (h, s, b, a) => {
+   
+    s /= 100;
+    b /= 100;
+    const k = (n) => (n + h / 60) % 6;
+    const f = (n) => b * (1 - s * Math.max(0, Math.min(k(n), 4 - k(n), 1)));
+    let temp = [255 * f(5), 255 * f(3), 255 * f(1)]
+    return "rgba(" + temp[0] + "," + temp[1] + "," + temp[2] + "," + a + ")";
+};
 
 export default function App() {
   const [img, setImg] = useState(null);
@@ -60,7 +57,7 @@ export default function App() {
             height: "500px",
             backgroundColor: "#000000",
             textAlign: "center",
-              color:   hsl2rgba(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
+              color: HSBToRGB(textColor.hue, textColor.saturation * 100, textColor.brightness * 100, textColor.alpha ? textColor.alpha : 0.0),
 
             fontSize: 30,
             display: "",
