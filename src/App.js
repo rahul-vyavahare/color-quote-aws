@@ -19,9 +19,9 @@ export default function App() {
   const [img, setImg] = useState(null);
   const [value, setValue] = useState("your quote");
   const [textColor, setTextColor] = useState({
-    hue: 120,
-    brightness: 1,
-    saturation: 1
+      hue: 160,
+      brightness: 0.8,
+      saturation: 0.6
   });
   const handleChange = useCallback((newValue) => setValue(newValue), []);
   useEffect(() => {
