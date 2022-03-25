@@ -1,3 +1,8 @@
+Heroku app link :-  https://react-color-quote.herokuapp.com/
+
+AWS Amplify app Link :-  https://master.dx61jlip9dn0s.amplifyapp.com/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
